@@ -2,17 +2,18 @@ package org.launchcode;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Menu {
     private Date lastUpdated;
-    private ArrayList<MenuItem> items;
+    private final List<MenuItem> menuItems;
 
-    public Menu(Date d, ArrayList<MenuItem> i) {
-        this.lastUpdated = d;
-        this.items = i;
+    public Menu() {
+        this.menuItems = new ArrayList<>();
+        this.lastUpdated = new Date();
     }
 
-    public void setLastUpdated(Date lastUpdated) {
+    /*public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 
@@ -26,7 +27,29 @@ public class Menu {
 
     public ArrayList<MenuItem> getItems() {
         return items;
+    }*/
+    public void addMenuItem(MenuItem menuItem) {
+        if (!menuItems.contains(menuItem)) {
+            menuItems.add(menuItem);
+            lastUpdated = new Date();
+        } else {
+            System.out.println("Item already exists in the menu: " + menuItem.getName());
+        }
+    }
+
+    public void removeMenuItem(MenuItem menuItem) {
+        menuItems.remove(menuItem);
+        lastUpdated = new Date();
+    }
+
+    /*public Date getLastUpdated(){
+        return lastUpdated;
+    }*/
+
+    public void printMenu() {
+        System.out.println("Menu:");
+        for (MenuItem menuItem : menuItems) {
+            System.out.println(menuItem.getName() + " - " + menuItem.getPrice() + " - " + menuItem.getCategory());
+        }
     }
 }
-
-

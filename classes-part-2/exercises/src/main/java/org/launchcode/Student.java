@@ -76,7 +76,49 @@ public class Student {
     private void setNumberOfCredits(int numberOfCredits) {
         this.numberOfCredits = numberOfCredits;
     }
+    public static String getGradeLevel(int credits) {
+        // Determine the grade level of the student based on numberOfCredits
+        if (credits <= 29) {
+            return "freshman";
+        } else if (credits <= 59) {
+            return "Sophomore";
+        } else if (credits <= 89) {
+            return "Junior";
+        } else {
+            return "senior";
+        }
+    }
+    public void addGrade(int courseCredits, double grade) {
+        // Update the appropriate fields: numberOfCredits, gpa
+        public void addGrade(int courseCredits, double grade) {
+            double totalQualityScore = this.gpa * this.numberOfCredits;
+            totalQualityScore += courseCredits * grade;
+            this.numberOfCredits += courseCredits;
+            this.gpa = totalQualityScore/this.numberOfCredits;
+        }
+        public String toString() {
 
+            String studentReport = String.format("%s is a %s with %d credits and a GPA of %.2f", this.name, this.getGradeLevel(this.numberOfCredits), this.getNumberOfCredits(), this.getGpa());
+            return studentReport;
+        }
+
+        public boolean equals(Object toBeCompared) {
+            if (toBeCompared == this) {
+                return true;
+            }
+
+            if (toBeCompared == null) {
+                return false;
+            }
+
+            if (toBeCompared.getClass() != getClass()) {
+                return false;
+            }
+
+            Student theStudent = (Student) toBeCompared;
+            return theStudent.getStudentId() == getStudentId();
+        }
+    }
     public static void main(String[] args) {
         Student sally = new Student("Sally",1,1,4.0);
         System.out.println("The Student class works! " + sally.getName() + " is a student!");
