@@ -25,9 +25,14 @@ public class BalancedBrackets {
             if (ch == '[') {
                 brackets++;
             } else if (ch == ']') {
+                // If we encounter a closing bracket before an opening one, return false
+                if (brackets == 0) {
+                    return false;
+                }
                 brackets--;
             }
         }
+        // After processing the entire string, brackets should be zero for it to be balanced
         return brackets == 0;
     }
 }
