@@ -1,10 +1,15 @@
 package org.launchcode;
 
 public class Main {
-    public static void main(String[] args) {
+    public static <CD> void main(String[] ignoredArgs) {
+        // Declare and initialize a CD and a DVD object
+        CD myCd = new CD("My CD", 700, "CD-specific field");
+        DVD myDvd = new DVD("My DVD", 4700, "DVD-specific field");
 
-        // TODO: Declare and initialize a CD and a DVD object.
+        // Call each CD and DVD method to verify that they work as expected
+        myCd.spinDisc();
+        myDvd.spinDisc();
 
-        // TODO: Call each CD and DVD method to verify that they work as expected.
+        // Call other methods as needed
     }
 }
